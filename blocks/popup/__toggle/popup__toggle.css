@@ -1,0 +1,13 @@
+.popup__toggle {
+    margin-left: 438px;
+margin-bottom: 8px;
+    cursor: pointer
+}
+.popup__toggle:hover {
+    opacity: 0.6;
+}
+@media screen and (max-width: 600px) {
+    .popup__toggle {
+        margin-left: 262px
+    }
+}

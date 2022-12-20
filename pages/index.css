@@ -1,0 +1,46 @@
+/*                         нормалайз                                        */
+@import url(../vendor/normalize.css);
+/*                         шрифты                                        */
+@import url(../vendor/fonts/fonts.css);
+/*                         общие правила страницы                                        */
+@import url(../blocks/page/page.css);
+/*                         хедер                                        */
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+/*                         цвет body                                        */
+@import url(../blocks/body-color/body-color.css);
+/*                         футер                                        */
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__text/footer__text.css);
+@import url(../blocks/footer/__block/footer__block.css);
+/*                         страница с контентом                                        */
+@import url(../blocks/content/content.css);
+/*                         профильная часть с аватаркой редактором и кнопкой                                     */
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__editor/profile__editor.css);
+@import url(../blocks/profile/__status/profile__status.css);
+@import url(../blocks/profile/__button/profile__button.css);
+@import url(../blocks/profile/__box/profile__box.css);
+/*                         попап всплывающее окно                                        */
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__admin/popup__admin.css);
+@import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__heading/popup__heading.css);
+@import url(../blocks/popup/__input-container/popup__input-container.css);
+@import url(../blocks/popup/__item/popup__item.css);
+@import url(../blocks/popup/__label/popup__label.css);
+@import url(../blocks/popup/__toggle/popup__toggle.css);
+@import url(../blocks/popup/__toggle/_icon/popup__toggle-icon.css);
+@import url(../blocks/popup/__box/popup__box.css);
+@import url(../blocks/popup/__opened/popup__opened.css);
+/*                         сетка элементов-картинок                                        */
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__card/elements__card.css);
+@import url(../blocks/elements/__image/elements__image.css);
+@import url(../blocks/elements/__title/elements__title.css);
+@import url(../blocks/elements/__button/button__like.css);
+@import url(../blocks/elements/__title-box/elements__title-box.css);
+
