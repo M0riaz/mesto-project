@@ -12,9 +12,6 @@
 /*                         футер                                        */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
-@import url(../blocks/footer/__block/footer__block.css);
-/*                         страница с контентом                                        */
-@import url(../blocks/content/content.css);
 /*                         профильная часть с аватаркой редактором и кнопкой                                     */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
@@ -29,13 +26,9 @@
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
-@import url(../blocks/popup/__input-container/popup__input-container.css);
 @import url(../blocks/popup/__item/popup__item.css);
-@import url(../blocks/popup/__label/popup__label.css);
 @import url(../blocks/popup/__toggle/popup__toggle.css);
-@import url(../blocks/popup/__toggle/_icon/popup__toggle-icon.css);
-@import url(../blocks/popup/__box/popup__box.css);
-@import url(../blocks/popup/__opened/popup__opened.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 /*                         сетка элементов-картинок                                        */
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__card/elements__card.css);
@@ -43,4 +36,6 @@
 @import url(../blocks/elements/__title/elements__title.css);
 @import url(../blocks/elements/__button/button__like.css);
 @import url(../blocks/elements/__title-box/elements__title-box.css);
+@import url(../blocks/elements/__active/elements__active.css);
+@import url(../blocks/elements/__list/elements__list.css);
 

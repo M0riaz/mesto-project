@@ -1,0 +1,3 @@
+.elements__active:active {
+    background: url("../../../images/black-heart.svg");
+}

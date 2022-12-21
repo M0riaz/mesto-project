@@ -6,12 +6,14 @@
     margin: 0;
     grid-area: status;
     align-self: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 315px;
 }
 
 @media screen  and (max-width: 660px) {
     .profile__status {
-        font-style: normal;
-        font-weight: 400;
         font-size: 14px;
         line-height: 17px;
         text-align: center;

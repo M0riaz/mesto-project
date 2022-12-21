@@ -1,18 +1,18 @@
 .elements__like{
     height: 19px;
     width: 22px;
-    position: absolute;
-    right: 30px;
-    top: 30px;
     padding: 0;
     border: none;
     cursor: pointer;
-    background: url("../../../images/heart.svg")
+    background-image: url("../../../images/heart.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    background-color: rgb(255, 255,255);
+    margin-right: 30px;
 }
 
 .elements__like:hover {
-    opacity: 0.6;
+    opacity: 0.5;
 }
-.elements__like:active {
-    background: url("../../../images/black-heart.svg");
-}
+

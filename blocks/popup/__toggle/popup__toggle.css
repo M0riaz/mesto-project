@@ -1,13 +1,37 @@
 .popup__toggle {
-    margin-left: 438px;
-margin-bottom: 8px;
-    cursor: pointer
+    background-image: url("../../../images/toggle_Icon.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    border: none;
+    top: -40px;
+    right: -40px;
+    padding: 0;
 }
 .popup__toggle:hover {
     opacity: 0.6;
 }
 @media screen and (max-width: 600px) {
     .popup__toggle {
-        margin-left: 262px
+        width: 20px;
+        height: 20px;
+        right: 0;
+        top: -36px;
     }
 }
+/*.popup__toggle_icon {*/
+/*    width: 32px;*/
+/*    height: 32px;*/
+/*}*/
+
+/*@media screen and (max-width: 600px) {*/
+/*    .popup__toggle_icon {*/
+/*        width: 20px;*/
+/*        height: 20px;*/
+/*    }*/
+/*}*/
