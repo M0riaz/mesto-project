@@ -2,5 +2,6 @@
     width: 282px;
     height: 282px;
     margin: 0;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
 }

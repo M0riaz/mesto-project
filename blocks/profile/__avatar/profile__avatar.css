@@ -3,7 +3,7 @@
     height: 120px;
     border-radius: 50%;
     grid-area: avatar;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
 }
 

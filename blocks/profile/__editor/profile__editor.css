@@ -2,9 +2,9 @@
     background-image: url("../../../images/pencil.svg");
     background-repeat: no-repeat;
     background-position: center;
-    background-color: rgba(0,0, 0, 0);
+    background-color: transparent;
     background-size: 10px 10px;
-    border: 1px solid rgb(255 255 255);
+    border: 1px solid rgb(255, 255, 255);
     margin-top: 13px;
     margin-left: 18px;
     width: 24px;
@@ -16,6 +16,7 @@
 
 .profile__editor:hover {
     opacity: 0.6;
+    transition: 0.5s;
 }
 
 
@@ -24,7 +25,7 @@
         justify-self: start;
         margin-left: 10px;
         margin-top: 8px;
-        background-size: 10px 10px;
+        background-size: 7px 7px;
         width: 18px;
         height: 18px;
         padding: 5px;

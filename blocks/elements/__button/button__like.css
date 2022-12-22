@@ -7,12 +7,13 @@
     background-image: url("../../../images/heart.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: right;
-    background-color: rgb(255, 255,255);
+    background-position: center;
+    background-color: transparent;
     margin-right: 30px;
 }
 
 .elements__like:hover {
     opacity: 0.5;
+    transition: 0.5s;
 }
 

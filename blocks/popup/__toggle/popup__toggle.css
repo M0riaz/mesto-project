@@ -6,7 +6,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     position: absolute;
     border: none;
     top: -40px;
@@ -15,6 +15,7 @@
 }
 .popup__toggle:hover {
     opacity: 0.6;
+    transition: 0.5s;
 }
 @media screen and (max-width: 600px) {
     .popup__toggle {
@@ -24,14 +25,3 @@
         top: -36px;
     }
 }
-/*.popup__toggle_icon {*/
-/*    width: 32px;*/
-/*    height: 32px;*/
-/*}*/
-
-/*@media screen and (max-width: 600px) {*/
-/*    .popup__toggle_icon {*/
-/*        width: 20px;*/
-/*        height: 20px;*/
-/*    }*/
-/*}*/

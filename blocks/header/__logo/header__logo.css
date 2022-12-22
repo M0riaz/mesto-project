@@ -2,7 +2,7 @@
     width: 142px;
     height: 33px;
     margin: 45px 0 41px 0;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
 }
 
