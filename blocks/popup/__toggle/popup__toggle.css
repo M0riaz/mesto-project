@@ -12,10 +12,10 @@
     top: -40px;
     right: -40px;
     padding: 0;
+    transition: 0.5s;
 }
 .popup__toggle:hover {
     opacity: 0.6;
-    transition: 0.5s;
 }
 @media screen and (max-width: 600px) {
     .popup__toggle {

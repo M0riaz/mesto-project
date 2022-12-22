@@ -12,11 +12,11 @@
     justify-self: end;
     grid-area: btn;
     border-radius: 2px;
+    transition: 0.5s;
 }
 
 .profile__button:hover {
     opacity: 0.6;
-    transition: 0.5s;
 }
 
 @media screen and (max-width: 660px){
