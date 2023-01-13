@@ -1,3 +1,4 @@
 .elements__button_active {
-    background: url("../../../../images/black-heart.svg");
+    background: url("../../../../images/black-heart.svg") center no-repeat;
+    opacity: 1;
 }
