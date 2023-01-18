@@ -25,49 +25,50 @@
         </section>
         <section class="elements">
             <ul class="elements__list">
-            <li class="elements__card">
-                <img class="elements__image" src="./images/karachaevsk.jpg" alt="фото Карачаевска">
-                <div class="elements__title-box">
-                    <h2 class="elements__title">Карачаевск-лала</h2>
-                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>
-                </div>
+<!--            <li class="elements__card">-->
+<!--                <button class="elements__delite-button" type="button" aria-label="кнопка для удаления карточки" ></button>-->
+<!--                <img class="elements__image" src="./images/karachaevsk.jpg" alt="фото Карачаевска">-->
+<!--                <div class="elements__title-box">-->
+<!--                    <h2 class="elements__title">Карачаевск-лала</h2>-->
+<!--                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>-->
+<!--                </div>-->
 
-            </li>
-            <li class="elements__card">
-                <img class="elements__image" src="./images/elbrus.png" alt="гора Эльбрус">
-                <div class="elements__title-box">
-                    <h2 class="elements__title">Гора Эльбрус</h2>
-                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>
-                </div>
-            </li>
-            <li class="elements__card">
-                <img class="elements__image" src="./images/dombay.png" alt="Домбай">
-                <div class="elements__title-box">
-                    <h2 class="elements__title">Домбай</h2>
-                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>
-                </div>
-            </li>
-            <li class="elements__card">
-                <img class="elements__image" src="./images/elbrus.png" alt="гора Эльбрус">
-                <div class="elements__title-box">
-                    <h2 class="elements__title">Гора Эльбрус</h2>
-                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>
-                </div>
-            </li>
-            <li class="elements__card">
-                <img class="elements__image" src="./images/dombay.png" alt="Домбай">
-                <div class="elements__title-box">
-                    <h2 class="elements__title">Домбай</h2>
-                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>
-                </div>
-            </li>
-            <li class="elements__card">
-                <img class="elements__image" src="./images/karachaevsk.jpg" alt="фото Карачаевска">
-                <div class="elements__title-box">
-                    <h2 class="elements__title">Карачаевск</h2>
-                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>
-                </div>
-            </li>
+<!--            </li>-->
+<!--            <li class="elements__card">-->
+<!--                <img class="elements__image" src="./images/elbrus.png" alt="гора Эльбрус">-->
+<!--                <div class="elements__title-box">-->
+<!--                    <h2 class="elements__title">Гора Эльбрус</h2>-->
+<!--                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="elements__card">-->
+<!--                <img class="elements__image" src="./images/dombay.png" alt="Домбай">-->
+<!--                <div class="elements__title-box">-->
+<!--                    <h2 class="elements__title">Домбай</h2>-->
+<!--                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="elements__card">-->
+<!--                <img class="elements__image" src="./images/elbrus.png" alt="гора Эльбрус">-->
+<!--                <div class="elements__title-box">-->
+<!--                    <h2 class="elements__title">Гора Эльбрус</h2>-->
+<!--                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="elements__card">-->
+<!--                <img class="elements__image" src="./images/dombay.png" alt="Домбай">-->
+<!--                <div class="elements__title-box">-->
+<!--                    <h2 class="elements__title">Домбай</h2>-->
+<!--                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="elements__card">-->
+<!--                <img class="elements__image" src="./images/karachaevsk.jpg" alt="фото Карачаевска">-->
+<!--                <div class="elements__title-box">-->
+<!--                    <h2 class="elements__title">Карачаевск</h2>-->
+<!--                    <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>-->
+<!--                </div>-->
+<!--            </li>-->
             </ul>
         </section>
     </main>
@@ -97,15 +98,17 @@
         </div>
     </div>
 </div>
-<script src="script.js"></script>
-<template id="card-template">
+
+<template class="card-template">
     <li class="elements__card">
+        <button class="elements__delite-button" type="button" aria-label="кнопка для удаления карточки" ></button>
         <img class="elements__image" src="#" alt="">
         <div class="elements__title-box">
             <h2 class="elements__title"></h2>
-            <button class="elements__button elements__button_active" type="button" aria-label="кнопка для отметки нравиться"></button>
+            <button class="elements__button " type="button" aria-label="кнопка для отметки нравиться"></button>
         </div>
     </li>
 </template>
+<script src="script.js"></script>
 </body>
 </html>
