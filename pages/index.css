@@ -29,6 +29,10 @@
 @import url(../blocks/popup/__item/popup__item.css);
 @import url(../blocks/popup/__toggle/popup__toggle.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_opened-big-image/popup_opened-big-image.css);
+@import url(../blocks/popup/__image-box/popup__image-box.css);
+@import url(../blocks/popup/__image-comment/popup__image-comment.css);
+@import url(../blocks/popup/__image/popup__image.css);
 /*                         сетка элементов-картинок                                        */
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__card/elements__card.css);
