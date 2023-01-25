@@ -33,7 +33,7 @@
     </footer>
     <div class="popup">
         <div class="popup__container">
-            <button type="button"  aria-label="кнопка закрытия окошка" class="popup__toggle"></button>
+            <button type="button"  aria-label="кнопка закрытия окошка" class="popup__toggle popup__toggle-edit-button "></button>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form class="popup__admin" name="popupAdmin">
                 <input class="popup__item popup__item_value_name" id="name" name="name" type="text" value="Жак-Ив Кусто" placeholder="введите ваше имя">
@@ -46,7 +46,7 @@
         <div class="popup__container">
             <button type="button"  aria-label="кнопка закрытия окошка" class="popup__toggle popup__toggle-add-image "></button>
             <h2 class="popup__heading">Новое место</h2>
-            <form class="popup__admin" name="popupAdmin">
+            <form class="popup__admin popup__admin-new-place" name="popupAdmin">
                 <input class="popup__item popup__item_value_new-place" id="place" name="place" type="text" value="" placeholder="Название">
                 <input class="popup__item popup__item_value_link" id="link-place" name="link-place" type="text" value="" placeholder="Ссылка на картинку">
                 <button class="popup__button popup__button-create" type="submit">Создать</button>
@@ -71,6 +71,7 @@
         </div>
     </li>
 </template>
-<script src="script.js"></script>
+<script src="scripts/cards.js"></script>
+<script src="scripts/script.js"></script>
 </body>
 </html>
