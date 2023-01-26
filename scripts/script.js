@@ -1,21 +1,19 @@
-
 //consts
+
 //закрывающий элемент в popup
 const popupCloseButton = document.querySelector('.popup__toggle-edit-button ');
 //элемент редактирования профиля(карандашик)
 const profileButtonOpenClose = document.querySelector('.profile__editor');
-//элемент формы в popup
-const formProfile = document.querySelector('.popup__admin-new-place');
+//форма новое место
+const formNewPlace = document.querySelector('.popup__admin-new-place');
+//форма профиль
+const formProfile = document.querySelector('.popup__admin');
 // элемент в popup имя
 const nameInput = document.querySelector('.popup__item_value_name');
 // элемент в popup хобби
 const jobInput = document.querySelector('.popup__item_value_hobby');
 // 'элемент большая кнопка в профиле на добавление карточек с картинками
 const buttonAddImageProfile = document.querySelector('.profile__button');
-// элемент в popup добавление картинок на закрытие (крестик)
-const buttonClosePopupImage = document.querySelector('.popup__toggle-close');
-// элемент кнопка создать в popup добавление картинок
-const buttonSubmit = document.querySelector('.popup__button-create');
 // элемент Ul (список карточек, основное хранилище)
 const elementsList = document.querySelector('.elements__list');
 // элемент тимплейта
@@ -24,8 +22,27 @@ const cardTemplate = document.querySelector('.card-template').content;
 const buttonCloseBigImage = document.querySelector('.popup__toggle-big-image');
 // кнопка закрытия у попапа с добавлением картинок
 const popupAddImageClose = document.querySelector('.popup__toggle-add-image');
-// кнопка сохранения редактирования профиля
-const buttonSaveFormProfile = document.querySelector('.popup__button');
+// элемент профиля имя пользователя
+const profileName = document.querySelector('.profile__name');
+// элемент профиля статус
+const profileStatus = document.querySelector('.profile__status');
+// попап редактирования профиля и статуса
+const popupProfileOpenClose = document.querySelector('.popup-profile')
+//попап редактирования большой картинки
+const bigImagePopup = document.querySelector('.popup_opened-big-image')
+// попап редактирования добавления ссылки на картинку подписи с местом
+const imagePopupOpen = document.querySelector('.popup_opened-image')
+
+//функция открытия попапа
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+}
+
+//функция закрытия попапа
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+}
+
 
 //функция создающая карточки
 function createCard(cardName, linkImage) {
@@ -50,7 +67,7 @@ function createCard(cardName, linkImage) {
         document.querySelector('.popup__image-comment').textContent = cardName;
         document.querySelector('.popup__image').alt = cardName;
 
-        document.querySelector('.popup_opened-big-image').classList.add('popup_opened');
+        openPopup(bigImagePopup)
     })
     return cardElem
 }
@@ -64,64 +81,62 @@ initialCards.forEach(function (element) {
     const cardAdd = createCard(element.name, element.link);
     elementsList.prepend(cardAdd);
 });
+
 //функция добавляющая картинки на страницу через popup img
 function submitCardForm(evt) {
     evt.preventDefault();
 
-    let linkInput = document.querySelector('.popup__item_value_link');
-    let placeInput = document.querySelector('.popup__item_value_new-place');
-    let newCard = createCard(placeInput.value, linkInput.value);
+    const linkInput = document.querySelector('.popup__item_value_link');
+    const  placeInput = document.querySelector('.popup__item_value_new-place');
+    const newCard = createCard(placeInput.value, linkInput.value);
 
-    document.querySelector('.popup_opened-image').classList.remove('popup_opened');
+    closePopup(imagePopupOpen)
     linkInput.value = '';
     placeInput.value = '';
     renderCard(newCard, elementsList);
 }
-buttonSubmit.addEventListener('click', submitCardForm);
+formNewPlace.addEventListener('submit', submitCardForm);
 
 
-// //функция закрывающая окошко popup
-function closePopup() {
-    document.querySelector('.popup_opened').classList.remove('popup_opened');
-}
-popupCloseButton.addEventListener('click', closePopup);
+//функция закрывающая окошко popup редактирования профиля
+ function closePopupProfile() {
+  closePopup(popupProfileOpenClose)
+ }
+ popupCloseButton.addEventListener('click', closePopupProfile);
 
 
 //закрытие большой картинки
 buttonCloseBigImage.addEventListener('click', function () {
-     document.querySelector('.popup_opened-big-image').classList.remove('popup_opened');
+     closePopup(bigImagePopup)
 })
 
 
 //функция открывающая окошко popup
-function openPopup() {
-    document.querySelector('.popup').classList.add('popup_opened');
+function openPopupEditProfile() {
+    openPopup(popupProfileOpenClose)
 }
-profileButtonOpenClose.addEventListener('click', openPopup)
+profileButtonOpenClose.addEventListener('click', openPopupEditProfile)
 
-
-buttonSaveFormProfile.addEventListener('click', (evt => {
+//редактирование имени профиля и хобби с сохранением
+formProfile.addEventListener('submit', (evt => {
     evt.preventDefault();
 
-
-    let qwe =  document.querySelector('.profile__name');
-    let qaz =  document.querySelector('.profile__status');
-    qwe.textContent = nameInput.value;
-    qaz.textContent  =  jobInput.value;
-    document.querySelector('.popup_opened').classList.remove('popup_opened');
+    profileName.textContent = nameInput.value;
+    profileStatus.textContent  =  jobInput.value;
+    closePopup(popupProfileOpenClose)
 }));
 
 
 //функция открывающая окошко добавление картинки
 function openedPopupImage() {
-    document.querySelector('.popup_opened-image').classList.add('popup_opened');
+    openPopup(imagePopupOpen)
 }
 buttonAddImageProfile.addEventListener('click', openedPopupImage);
 
 
 //функция закрывающая попап с добавлением картинок
 function closePopupImage() {
-    document.querySelector('.popup_opened').classList.remove('popup_opened');
+    closePopup(imagePopupOpen)
     document.querySelector('.popup__item_value_link').value = '';
     document.querySelector('.popup__item_value_new-place').value = '';
 }
