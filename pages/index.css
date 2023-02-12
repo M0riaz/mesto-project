@@ -33,6 +33,11 @@
 @import url(../blocks/popup/__image-box/popup__image-box.css);
 @import url(../blocks/popup/__image-comment/popup__image-comment.css);
 @import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
+@import url(../blocks/popup/__item/_error/popup__item_error.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);
+@import url(../blocks/popup/__input-error/_active/popup__input-error_active.css);
+@import url(../blocks/popup/__label/popup__label.css);
 /*                         сетка элементов-картинок                                        */
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__card/elements__card.css);

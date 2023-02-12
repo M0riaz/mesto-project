@@ -11,7 +11,7 @@
 <div class="page">
 
     <header class="header">
-            <img class="header__logo" src="./images/logo-vector.svg" alt="логотип Mesto">
+        <img class="header__logo" src="./images/logo-vector.svg" alt="логотип Mesto">
     </header>
     <main class="content">
         <section class="profile">
@@ -29,41 +29,71 @@
         </section>
     </main>
     <footer class="footer">
-        <p  class="footer__text" lang="en">	&COPY; 2020 Mesto Russia</p>
+        <p class="footer__text" lang="en"> &COPY; 2020 Mesto Russia</p>
     </footer>
+
+
     <div class="popup popup-profile">
         <div class="popup__container">
-            <button type="button"  aria-label="кнопка закрытия окошка" class="popup__toggle popup__toggle-edit-button "></button>
+            <button type="button" aria-label="кнопка закрытия окошка"
+                    class="popup__toggle popup__toggle-edit-button "></button>
             <h2 class="popup__heading">Редактировать профиль</h2>
-            <form class="popup__admin" name="popupAdmin">
-                <input class="popup__item popup__item_value_name" id="name" name="name" type="text" value="Жак-Ив Кусто" placeholder="введите ваше имя">
-                <input class="popup__item popup__item_value_hobby" id="hobby" name="hobby" type="text" value="Исследователь океана" placeholder="введите ваше хобби">
-                <button class="popup__button" type="submit">Сохранить</button>
+            <form novalidate class="popup__admin" name="popupAdmin">
+                <label class="popup__label">
+                    <input class="popup__item popup__item_value_name" id="name" name="name" type="text"
+                           value="Жак-Ив Кусто" placeholder="введите ваше имя" required minlength="2" maxlength="40"
+                           pattern="[A-Za-zА-Яа-яЁё\s-]+"
+                           data-error-message="Разрешены только буквы латинского или кириллического алфавита">
+                    <span class="name-error popup__input-error  "> </span>
+                </label>
+                <label class="popup__label">
+                    <input class="popup__item popup__item_value_hobby" id="hobby" name="hobby" type="text"
+                           value="Исследователь океана" placeholder="О себе" required minlength="2" maxlength="200"
+                           pattern="[A-Za-zА-Яа-яЁё\s-]+"
+                           data-error-message="Разрешены только буквы латинского или кириллического алфавита">
+                    <span class="popup__input-error hobby-error"></span>
+                </label>
+                <button class="popup__button " type="submit">Сохранить</button>
             </form>
         </div>
     </div>
+
+
     <div class=" popup popup_opened-image">
         <div class="popup__container">
-            <button type="button"  aria-label="кнопка закрытия окошка" class="popup__toggle popup__toggle-add-image "></button>
+            <button type="button" aria-label="кнопка закрытия окошка"
+                    class="popup__toggle popup__toggle-add-image "></button>
             <h2 class="popup__heading">Новое место</h2>
-            <form class="popup__admin popup__admin-new-place" name="popupAdminNewPlace">
-                <input class="popup__item popup__item_value_new-place" id="place" name="place" type="text" value="" placeholder="Название">
-                <input class="popup__item popup__item_value_link" id="link-place" name="link-place" type="text" value="" placeholder="Ссылка на картинку">
-                <button class="popup__button popup__button-create" type="submit">Создать</button>
+            <form novalidate class="popup__admin popup__admin-new-place" name="popupAdminNewPlace">
+                <label class="popup__label">
+                    <input class="popup__item popup__item_value_new-place" id="place" name="place" type="text" value=""
+                           placeholder="Название" required minlength="2" maxlength="30" pattern="[A-Za-zА-Яа-яЁё\s-]+"
+                           data-error-message="Разрешены только буквы латинского или кириллического алфавита">
+                    <span class="popup__input-error place-error"></span>
+                </label>
+                <label class="popup__label">
+                    <input class="popup__item popup__item_value_link" id="link-place" name="link" type="url" value=""
+                           placeholder="Ссылка на картинку" required pattern="(http|https):\/\/([\w.]+\/?)\S*" data-error-message="Введите адрес сайта">
+                    <span class="popup__input-error link-place-error popup__input-error_active"></span>
+                </label>
+                <button class="  popup__button popup__button-create " type="submit">Создать</button>
             </form>
         </div>
     </div>
-        <div class="popup popup_opened-big-image">
-            <div class="popup__image-box">
-                <button type="button"  aria-label="кнопка закрытия окошка" class="popup__toggle popup__toggle-big-image"></button>
-                <img class="popup__image" src="" alt="">
-                <p class="popup__image-comment"></p>
-            </div>
+
+
+    <div class="popup popup_opened-big-image">
+        <div class="popup__image-box">
+            <button type="button" aria-label="кнопка закрытия окошка"
+                    class="popup__toggle popup__toggle-big-image"></button>
+            <img class="popup__image" src="" alt="">
+            <p class="popup__image-comment"></p>
         </div>
+    </div>
 </div>
 <template class="card-template">
     <li class="elements__card">
-        <button class="elements__delite-button" type="button" aria-label="кнопка для удаления карточки" ></button>
+        <button class="elements__delite-button" type="button" aria-label="кнопка для удаления карточки"></button>
         <img class="elements__image" src="#" alt="">
         <div class="elements__title-box">
             <h2 class="elements__title"></h2>
@@ -71,7 +101,8 @@
         </div>
     </li>
 </template>
-<script src="scripts/cards.js"></script>
-<script src="scripts/script.js"></script>
+<!--<script src="scripts/cards.js"></script>-->
+<script type="module" src="scripts/script.js"></script>
+<!--<script src="scripts/valid.js"></script>-->
 </body>
 </html>

@@ -1,5 +1,5 @@
-//consts
-
+import {initialCards} from "./cards.js";
+import {showError,hideError,toggleButtonStatus,checkAllForms,checkInputValidity,hasInvalidInput,setEventListener} from "./valid.js";
 //закрывающий элемент в popup
 const popupCloseButton = document.querySelector('.popup__toggle-edit-button ');
 //элемент редактирования профиля(карандашик)
@@ -32,6 +32,8 @@ const popupProfileOpenClose = document.querySelector('.popup-profile')
 const bigImagePopup = document.querySelector('.popup_opened-big-image')
 // попап редактирования добавления ссылки на картинку подписи с местом
 const imagePopupOpen = document.querySelector('.popup_opened-image')
+// выбор всех попапов
+const popupMain = document.querySelectorAll('.popup')
 
 //функция открытия попапа
 function openPopup(popup) {
@@ -40,9 +42,8 @@ function openPopup(popup) {
 
 //функция закрытия попапа
 function closePopup(popup) {
-    popup.classList.remove('popup_opened');
+    popup.classList.remove('popup_opened') ;
 }
-
 
 //функция создающая карточки
 function createCard(cardName, linkImage) {
@@ -93,7 +94,9 @@ function submitCardForm(evt) {
     closePopup(imagePopupOpen)
     linkInput.value = '';
     placeInput.value = '';
+
     renderCard(newCard, elementsList);
+   // setSubmitButtonState(false); //вызов функции блокирующей кнопку отправки-------------------------------------
 }
 formNewPlace.addEventListener('submit', submitCardForm);
 
@@ -106,7 +109,7 @@ formNewPlace.addEventListener('submit', submitCardForm);
 
 
 //закрытие большой картинки
-buttonCloseBigImage.addEventListener('click', function () {
+buttonCloseBigImage.addEventListener( 'click',  function () {
      closePopup(bigImagePopup)
 })
 
@@ -139,7 +142,27 @@ function closePopupImage() {
     closePopup(imagePopupOpen)
     document.querySelector('.popup__item_value_link').value = '';
     document.querySelector('.popup__item_value_new-place').value = '';
+   // setSubmitButtonState(false); ---------------------------------------------------------------
 }
 popupAddImageClose.addEventListener('click', closePopupImage);
 
+// функция закрывающая попап на esc
+window.addEventListener('keydown', evt => {
+    popupMain.forEach(popup => {
+        if (evt.key === 'Escape'){
+            popup.classList.remove('popup_opened')
+        }
+    })
+})
+
+
+
+// функция закрывающая попап по нажатию на оверлей
+document.addEventListener('click', function (evt) {
+
+    if (evt.target.classList.contains('popup')) {
+        evt.target.classList.remove('popup_opened')
+    }
+
+})
 
