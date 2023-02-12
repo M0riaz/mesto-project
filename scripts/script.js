@@ -1,39 +1,32 @@
 import {initialCards} from "./cards.js";
-import {showError,hideError,toggleButtonStatus,checkAllForms,checkInputValidity,hasInvalidInput,setEventListener} from "./valid.js";
-//закрывающий элемент в popup
-const popupCloseButton = document.querySelector('.popup__toggle-edit-button ');
-//элемент редактирования профиля(карандашик)
-const profileButtonOpenClose = document.querySelector('.profile__editor');
-//форма новое место
-const formNewPlace = document.querySelector('.popup__admin-new-place');
-//форма профиль
-const formProfile = document.querySelector('.popup__admin');
-// элемент в popup имя
-const nameInput = document.querySelector('.popup__item_value_name');
-// элемент в popup хобби
-const jobInput = document.querySelector('.popup__item_value_hobby');
-// 'элемент большая кнопка в профиле на добавление карточек с картинками
-const buttonAddImageProfile = document.querySelector('.profile__button');
-// элемент Ul (список карточек, основное хранилище)
-const elementsList = document.querySelector('.elements__list');
-// элемент тимплейта
-const cardTemplate = document.querySelector('.card-template').content;
-// кнопка закрытия у попапа с большой картинкой
-const buttonCloseBigImage = document.querySelector('.popup__toggle-big-image');
-// кнопка закрытия у попапа с добавлением картинок
-const popupAddImageClose = document.querySelector('.popup__toggle-add-image');
-// элемент профиля имя пользователя
-const profileName = document.querySelector('.profile__name');
-// элемент профиля статус
-const profileStatus = document.querySelector('.profile__status');
-// попап редактирования профиля и статуса
-const popupProfileOpenClose = document.querySelector('.popup-profile')
-//попап редактирования большой картинки
-const bigImagePopup = document.querySelector('.popup_opened-big-image')
-// попап редактирования добавления ссылки на картинку подписи с местом
-const imagePopupOpen = document.querySelector('.popup_opened-image')
-// выбор всех попапов
-const popupMain = document.querySelectorAll('.popup')
+import {
+    showError,
+    hideError,
+    toggleButtonStatus,
+    checkAllForms,
+    checkInputValidity,
+    hasInvalidInput,
+    setEventListener
+} from "./valid.js";
+import {
+    popupCloseButton,
+    profileButtonOpenClose,
+    formNewPlace,
+    formProfile,
+    nameInput,
+    jobInput,
+    buttonAddImageProfile,
+    elementsList,
+    cardTemplate,
+    buttonCloseBigImage,
+    popupAddImageClose,
+    profileName,
+    profileStatus,
+    popupProfileOpenClose,
+    bigImagePopup,
+    imagePopupOpen,
+    popupMain
+} from "./consts.js";
 
 //функция открытия попапа
 function openPopup(popup) {
@@ -42,7 +35,7 @@ function openPopup(popup) {
 
 //функция закрытия попапа
 function closePopup(popup) {
-    popup.classList.remove('popup_opened') ;
+    popup.classList.remove('popup_opened');
 }
 
 //функция создающая карточки
@@ -72,6 +65,7 @@ function createCard(cardName, linkImage) {
     })
     return cardElem
 }
+
 //функция добавляющая карточки в разметку
 function renderCard(card, container) {
     container.prepend(card)
@@ -88,7 +82,7 @@ function submitCardForm(evt) {
     evt.preventDefault();
 
     const linkInput = document.querySelector('.popup__item_value_link');
-    const  placeInput = document.querySelector('.popup__item_value_new-place');
+    const placeInput = document.querySelector('.popup__item_value_new-place');
     const newCard = createCard(placeInput.value, linkInput.value);
 
     closePopup(imagePopupOpen)
@@ -96,21 +90,23 @@ function submitCardForm(evt) {
     placeInput.value = '';
 
     renderCard(newCard, elementsList);
-   // setSubmitButtonState(false); //вызов функции блокирующей кнопку отправки-------------------------------------
+    // setSubmitButtonState(false); //вызов функции блокирующей кнопку отправки-------------------------------------
 }
+
 formNewPlace.addEventListener('submit', submitCardForm);
 
 
 //функция закрывающая окошко popup редактирования профиля
- function closePopupProfile() {
-  closePopup(popupProfileOpenClose)
- }
- popupCloseButton.addEventListener('click', closePopupProfile);
+function closePopupProfile() {
+    closePopup(popupProfileOpenClose)
+}
+
+popupCloseButton.addEventListener('click', closePopupProfile);
 
 
 //закрытие большой картинки
-buttonCloseBigImage.addEventListener( 'click',  function () {
-     closePopup(bigImagePopup)
+buttonCloseBigImage.addEventListener('click', function () {
+    closePopup(bigImagePopup)
 })
 
 
@@ -118,6 +114,7 @@ buttonCloseBigImage.addEventListener( 'click',  function () {
 function openPopupEditProfile() {
     openPopup(popupProfileOpenClose)
 }
+
 profileButtonOpenClose.addEventListener('click', openPopupEditProfile)
 
 //редактирование имени профиля и хобби с сохранением
@@ -125,7 +122,7 @@ formProfile.addEventListener('submit', (evt => {
     evt.preventDefault();
 
     profileName.textContent = nameInput.value;
-    profileStatus.textContent  =  jobInput.value;
+    profileStatus.textContent = jobInput.value;
     closePopup(popupProfileOpenClose)
 }));
 
@@ -134,6 +131,7 @@ formProfile.addEventListener('submit', (evt => {
 function openedPopupImage() {
     openPopup(imagePopupOpen)
 }
+
 buttonAddImageProfile.addEventListener('click', openedPopupImage);
 
 
@@ -142,19 +140,19 @@ function closePopupImage() {
     closePopup(imagePopupOpen)
     document.querySelector('.popup__item_value_link').value = '';
     document.querySelector('.popup__item_value_new-place').value = '';
-   // setSubmitButtonState(false); ---------------------------------------------------------------
+    // setSubmitButtonState(false); ---------------------------------------------------------------
 }
+
 popupAddImageClose.addEventListener('click', closePopupImage);
 
 // функция закрывающая попап на esc
 window.addEventListener('keydown', evt => {
     popupMain.forEach(popup => {
-        if (evt.key === 'Escape'){
+        if (evt.key === 'Escape') {
             popup.classList.remove('popup_opened')
         }
     })
 })
-
 
 
 // функция закрывающая попап по нажатию на оверлей
@@ -166,3 +164,4 @@ document.addEventListener('click', function (evt) {
 
 })
 
+console.log('hello')
