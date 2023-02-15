@@ -1,0 +1,9 @@
+.elements__title-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    max-width: 282px;
+    padding: 25px 0 31px 21px;
+    border-radius: 0  0 10px 10px;
+}
