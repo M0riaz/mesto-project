@@ -25,7 +25,7 @@ import {
 
 import {createCard} from "./scripts/createNewCard.js"
 
-import './pages/index.css';
+// import './pages/index.css';
 
 //функция открытия попапа
 export function openPopup(popup) {
@@ -121,3 +121,4 @@ document.addEventListener('keydown', evt => {
         }
     })
 });
+console.log('hey')
