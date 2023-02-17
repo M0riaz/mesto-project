@@ -4,25 +4,28 @@ import {openPopup} from "../index.js";
 
 export function createCard(cardName, linkImage) {
     const cardElem = cardTemplate.querySelector('.elements__card').cloneNode(true);
-
-    cardElem.querySelector('.elements__image').src = linkImage;
-    cardElem.querySelector('.elements__title').textContent = cardName;
-    cardElem.querySelector('.elements__image').alt = cardName;
+    const elementImage = cardElem.querySelector('.elements__image');
+    const elementTitle = cardElem.querySelector('.elements__title');
+    const popupImage = document.querySelector('.popup__image');
+    const popupImageComment = document.querySelector('.popup__image-comment')
+    const deleteBtn = cardElem.querySelector('.elements__delite-button');
+    const likeBtn = cardElem.querySelector('.elements__button');
+    elementImage.src = linkImage;
+    elementTitle.textContent = cardName;
+    elementImage.alt = cardName;
 //удаление карточки
-    cardElem.querySelector('.elements__delite-button').addEventListener('click', function (evt) {
+    deleteBtn.addEventListener('click', function (evt) {
         evt.target.closest('.elements__card').remove()
     });
     //лайк карточки
-    cardElem.querySelector('.elements__button').addEventListener('click', function (evt) {
-
-        evt.target.classList.remove('.elements__button');
+    likeBtn.addEventListener('click', function (evt) {
         evt.target.classList.toggle('elements__button_active');
     });
 // попап с большой картинкой
-    cardElem.querySelector('.elements__image').addEventListener('click', function () {
-        document.querySelector('.popup__image').src = linkImage;
-        document.querySelector('.popup__image-comment').textContent = cardName;
-        document.querySelector('.popup__image').alt = cardName;
+    elementImage.addEventListener('click', function () {
+        popupImage.src = linkImage;
+        popupImageComment.textContent = cardName;
+        popupImage.alt = cardName;
 
         openPopup(bigImagePopup)
     })

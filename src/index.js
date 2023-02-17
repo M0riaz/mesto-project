@@ -1,10 +1,16 @@
 import {initialCards} from "./scripts/cards.js";
 import {
-    showError, hideError, toggleButtonStatus, checkAllForms, checkInputValidity, hasInvalidInput, setEventListener
-} from "./scripts/valid.js";
+    showError,
+    hideError,
+    toggleButtonStatus,
+    enableValidation,
+    checkInputValidity,
+    hasInvalidInput,
+    setEventListener
+} from "./scripts/validate.js";
 
 import {
-    popupCloseButton,
+    profileCloseButtonCross,
     profileButtonOpenClose,
     formNewPlace,
     formProfile,
@@ -20,12 +26,17 @@ import {
     popupProfileOpenClose,
     bigImagePopup,
     imagePopupOpen,
-    popupMain
+    popups,
+    linkInput,
+    placeInput,
+    buttonsCross, buttonOpenPopupCreateImage,
 } from "./scripts/consts.js";
 
 import {createCard} from "./scripts/createNewCard.js"
 
  import './pages/index.css';
+
+
 
 //функция открытия попапа
 export function openPopup(popup) {
@@ -51,30 +62,16 @@ initialCards.forEach(function (element) {
 //функция добавляющая картинки на страницу через popup img
 function submitCardForm(evt) {
     evt.preventDefault();
-
-    const linkInput = document.querySelector('.popup__item_value_link');
-    const placeInput = document.querySelector('.popup__item_value_new-place');
     const newCard = createCard(placeInput.value, linkInput.value);
-
     closePopup(imagePopupOpen)
-    linkInput.value = '';
-    placeInput.value = '';
-
+    //linkInput.value = '';
+  //  placeInput.value = '';
+   evt.target.reset()
     renderCard(newCard, elementsList);
 
 }
 formNewPlace.addEventListener('submit', submitCardForm);
 
-//функция закрывающая окошко popup редактирования профиля
-function closePopupProfile() {
-    closePopup(popupProfileOpenClose)
-}
-popupCloseButton.addEventListener('click', closePopupProfile);
-
-//закрытие большой картинки
-buttonCloseBigImage.addEventListener('click', function () {
-    closePopup(bigImagePopup)
-})
 
 //функция открывающая окошко popup
 function openPopupEditProfile() {
@@ -85,40 +82,48 @@ profileButtonOpenClose.addEventListener('click', openPopupEditProfile);
 //редактирование имени профиля и хобби с сохранением
 formProfile.addEventListener('submit', (evt => {
     evt.preventDefault();
-
     profileName.textContent = nameInput.value;
     profileStatus.textContent = jobInput.value;
     closePopup(popupProfileOpenClose);
 }));
 
+
 //функция открывающая окошко добавление картинки
 function openedPopupImage() {
+   // buttonOpenPopupCreateImage.classList.add('popup__button_disabled')
     openPopup(imagePopupOpen);
 }
 buttonAddImageProfile.addEventListener('click', openedPopupImage);
 
-//функция закрывающая попап с добавлением картинок
-function closePopupImage() {
-    closePopup(imagePopupOpen)
-    document.querySelector('.popup__item_value_link').value = '';
-    document.querySelector('.popup__item_value_new-place').value = '';
-}
-popupAddImageClose.addEventListener('click', closePopupImage);
-
-// функция закрывающая попап по нажатию на оверлей
-document.addEventListener('click', function (evt) {
-
-    if (evt.target.classList.contains('popup')) {
-        evt.target.classList.remove('popup_opened');
-    }
-});
-
-// функция закрывающая попап на esc
-document.addEventListener('keydown', evt => {
-    popupMain.forEach(popup => {
-        if (evt.key === 'Escape') {
-            popup.classList.remove('popup_opened');
-        }
+//функция закрывающая любой попап на клик по оверлею или по кнопке крестика
+function closeAnyPopup(){
+    popups.forEach((popup) => {
+        popup.addEventListener('mousedown', (evt) => {
+            if (evt.target.classList.contains('popup_opened')) {
+                closePopup(popup)
+            }
+            if (evt.target.classList.contains('popup__toggle')) {
+                closePopup(popup)
+            }
+        })
     })
+}
+closeAnyPopup()
+//функция закрывающая попап на esc
+function closeByEscape(evt){
+    if (evt.key === 'Escape'){
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup)
+    }
+}
+document.addEventListener('keydown', closeByEscape);
+
+enableValidation({
+    formSelector: '.popup__admin',
+    inputSelector: '.popup__item',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__item_error',
+    errorClass: 'popup__input-error_active'
 });
-console.log('hey')
+

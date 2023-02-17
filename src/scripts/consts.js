@@ -1,5 +1,5 @@
 //закрывающий элемент в popup
-export const popupCloseButton = document.querySelector('.popup__toggle-edit-button ');
+export const profileCloseButtonCross = document.querySelector('.popup__toggle-edit-button ');
 //элемент редактирования профиля(карандашик)
 export const profileButtonOpenClose = document.querySelector('.profile__editor');
 //форма новое место
@@ -31,4 +31,8 @@ export const bigImagePopup = document.querySelector('.popup_opened-big-image')
 // попап редактирования добавления ссылки на картинку подписи с местом
 export const imagePopupOpen = document.querySelector('.popup_opened-image')
 // выбор всех попапов
-export const popupMain = document.querySelectorAll('.popup')
+export const popups = document.querySelectorAll('.popup')
+export const linkInput = document.querySelector('.popup__item_value_link');
+ export const placeInput = document.querySelector('.popup__item_value_new-place');
+ export const buttonsCross = document.querySelectorAll('.popup__toggle');
+export const buttonOpenPopupCreateImage = document.querySelector('.popup__button-create')
