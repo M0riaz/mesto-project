@@ -2,7 +2,7 @@
   "name": "yandex.practikum",
   "version": "1.0.0",
   "description": "lerning platform",
-  "main": "src/components/components/index.js",
+  "main": "src/components/index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve"
