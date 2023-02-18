@@ -25,14 +25,16 @@ export const profileName = document.querySelector('.profile__name');
 // элемент профиля статус
 export const profileStatus = document.querySelector('.profile__status');
 // попап редактирования профиля и статуса
-export const popupProfileOpenClose = document.querySelector('.popup-profile')
+export const popupProfileOpenClose = document.querySelector('.popup-profile');
 //попап редактирования большой картинки
-export const bigImagePopup = document.querySelector('.popup_opened-big-image')
+export const bigImagePopup = document.querySelector('.popup_opened-big-image');
 // попап редактирования добавления ссылки на картинку подписи с местом
-export const imagePopupOpen = document.querySelector('.popup_opened-image')
+export const imagePopupOpen = document.querySelector('.popup_opened-image');
 // выбор всех попапов
-export const popups = document.querySelectorAll('.popup')
+export const popups = document.querySelectorAll('.popup');
 export const linkInput = document.querySelector('.popup__item_value_link');
  export const placeInput = document.querySelector('.popup__item_value_new-place');
- export const buttonsCross = document.querySelectorAll('.popup__toggle');
-export const buttonOpenPopupCreateImage = document.querySelector('.popup__button-create')
+ export const closeButtons = document.querySelectorAll('.popup__toggle');
+export const buttonOpenPopupCreateImage = document.querySelector('.popup__button-create');
+export const popupImage = document.querySelector('.popup__image');
+export const popupImageComment = document.querySelector('.popup__image-comment')
