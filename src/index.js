@@ -1,3 +1,10 @@
+
+
+import {addNewCardsOnServer, getCardsFromServer, patchingProfile, showLikes, showUser} from "./components/api"
+
+
+
+
 import {initialCards} from "./components/cards.js";
 import {
     showError,
@@ -29,7 +36,7 @@ import {
     popups,
     linkInput,
     placeInput,
-    closeButtons, buttonOpenPopupCreateImage,
+    closeButtons, buttonOpenPopupCreateImage, likeCountShow, buttonDeliteOnCard,
 } from "./components/consts.js";
 
 import {createCard} from "./components/createNewCard.js"
@@ -44,18 +51,20 @@ function renderCard(card, container) {
 }
 
 //добавление картинок "из коробки"
-initialCards.forEach(function (element) {
-    const cardAdd = createCard(element.name, element.link);
-    elementsList.prepend(cardAdd);
-});
+// initialCards.forEach(function (element) {
+//     const cardAdd = createCard(element.name, element.link);
+//     elementsList.prepend(cardAdd);
+// });
+
+
+
 
 //функция добавляющая картинки на страницу через popup img
 function submitCardForm(evt) {
     evt.preventDefault();
     const newCard = createCard(placeInput.value, linkInput.value);
+    addNewCardsOnServer(placeInput.value, linkInput.value);
     closePopup(imagePopupOpen)
-    //linkInput.value = '';
-  //  placeInput.value = '';
    evt.target.reset()
     renderCard(newCard, elementsList);
 
@@ -63,20 +72,28 @@ function submitCardForm(evt) {
 formNewPlace.addEventListener('submit', submitCardForm);
 
 
-//функция открывающая окошко popup
+//функция открывающая окошко popup профиля
 function openPopupEditProfile() {
     openPopup(popupProfileOpenClose);
 }
 profileButtonOpenClose.addEventListener('click', openPopupEditProfile);
 
 //редактирование имени профиля и хобби с сохранением
-formProfile.addEventListener('submit', (evt => {
+// formProfile.addEventListener('submit', (evt => {
+//
+//     profileName.textContent = nameInput.value;
+//     profileStatus.textContent = jobInput.value;
+//     closePopup(popupProfileOpenClose);
+// }));
+
+function saveRedactionProfile (evt){
     evt.preventDefault();
+    patchingProfile(nameInput.value,jobInput.value)
     profileName.textContent = nameInput.value;
     profileStatus.textContent = jobInput.value;
     closePopup(popupProfileOpenClose);
-}));
-
+}
+formProfile.addEventListener('submit', saveRedactionProfile)
 
 //функция открывающая окошко добавление картинки
 function openedPopupImage() {

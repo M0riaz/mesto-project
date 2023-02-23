@@ -38,3 +38,4 @@ export const linkInput = document.querySelector('.popup__item_value_link');
 export const buttonOpenPopupCreateImage = document.querySelector('.popup__button-create');
 export const popupImage = document.querySelector('.popup__image');
 export const popupImageComment = document.querySelector('.popup__image-comment')
+export const buttonDeliteOnCard = document.querySelector('.elements__delite-button')

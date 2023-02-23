@@ -12,17 +12,19 @@
 
     <header class="header">
         <img class="header__logo" src="<%=require('./images/logo-vector.svg')%>" alt="логотип Mesto">
-<!--        <img class="header__logo" src="./images/logo-vector.svg" alt="логотип Mesto">-->
     </header>
     <main class="content">
         <section class="profile">
             <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="аватар пользователя">
-<!--            <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар пользователя">-->
             <div class="profile__box">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <h1 class="profile__name">
+
+                </h1>
                 <button class="profile__editor" type="button" aria-label="кнопка для редактирования профиля"></button>
             </div>
-            <p class="profile__status">Исследователь океана</p>
+            <p class="profile__status">
+
+            </p>
             <button class="profile__button" type="button" aria-label="кнопка для добавления изображений"></button>
         </section>
         <section class="elements">
@@ -42,14 +44,16 @@
             <form novalidate class="popup__admin" name="popupAdmin">
                 <label class="popup__label">
                     <input class="popup__item popup__item_value_name" id="name" name="name" type="text"
-                           value="Жак-Ив Кусто" placeholder="введите ваше имя" required minlength="2" maxlength="40"
+                           value=""
+                           placeholder="введите ваше имя" required minlength="2" maxlength="40"
                            pattern="[A-Za-zА-Яа-яЁё\s-]+"
                            data-error-message="Разрешены только буквы латинского или кириллического алфавита">
                     <span class="name-error popup__input-error  "> </span>
                 </label>
                 <label class="popup__label">
                     <input class="popup__item popup__item_value_hobby" id="hobby" name="hobby" type="text"
-                           value="Исследователь океана" placeholder="О себе" required minlength="2" maxlength="200"
+                           value=""
+                           placeholder="О себе" required minlength="2" maxlength="200"
                            pattern="[A-Za-zА-Яа-яЁё\s-]+"
                            data-error-message="Разрешены только буквы латинского или кириллического алфавита">
                     <span class="popup__input-error hobby-error"></span>
@@ -92,11 +96,14 @@
 </div>
 <template class="card-template">
     <li class="elements__card">
-        <button class="elements__delite-button" type="button" aria-label="кнопка для удаления карточки"></button>
+        <button  class="elements__delite-button" type="button" aria-label="кнопка для удаления карточки"></button>
         <img class="elements__image" src="#" alt="">
         <div class="elements__title-box">
             <h2 class="elements__title"></h2>
+            <div class="elements__like-box">
             <button class="elements__button " type="button" aria-label="кнопка для отметки нравиться"></button>
+            <p class="elements__like-counter"></p>
+            </div>
         </div>
     </li>
 </template>
