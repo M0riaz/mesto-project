@@ -39,3 +39,12 @@ export const buttonOpenPopupCreateImage = document.querySelector('.popup__button
 export const popupImage = document.querySelector('.popup__image');
 export const popupImageComment = document.querySelector('.popup__image-comment')
 export const buttonDeliteOnCard = document.querySelector('.elements__delite-button')
+
+export const buttonOnpenAvatar = document.querySelector('.profile__avatar-button');
+export const avatarChangePopup = document.querySelector('.popup-profile-change-avatar')
+
+export const formNewAvatar = document.querySelector('.popup__admin-change-avatar')
+
+export const profileAvatar = document.querySelector('.profile__avatar')
+export const inputAvatar = document.querySelector('.popup__item_value_link-avatar')
+export const popupButtons = document.querySelectorAll('.popup__button')

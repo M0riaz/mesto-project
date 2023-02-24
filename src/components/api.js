@@ -38,7 +38,7 @@ export const getCardsFromServer = () => {
         })
 
         .catch(err => {
-            console.log('ой что то не так ' + err)
+            console.log('ой что то не так  1 ' + err)
         })
 }
 getCardsFromServer()
@@ -61,7 +61,7 @@ export const showUser = () => {
             document.querySelector('.profile__avatar').src = res.avatar
         })
         .catch(err => {
-            console.log('ой что то не так ' + err)
+            console.log('ой что то не так 2 ' + err)
         })
 
 
@@ -88,7 +88,7 @@ export const patchingProfile = (name, about) => {
         //     //console.log(data) //-------------------------------------------------
         // })
         .catch(err => {
-            console.log('ой что то не так ' + err)
+            console.log('ой что то не так 3' + err)
         })
 
 }
@@ -116,7 +116,7 @@ export const addNewCardsOnServer = (name, link) => {
         // })
 
         .catch(err => {
-            console.log('ой что то не так ' + err)
+            console.log('ой что то не так 4' + err)
         })
 }
 //ddNewCardsOnServer()
@@ -137,12 +137,79 @@ export const deliteCardOnServer = (idCard) => {
         })
 
         .catch(err => {
-            console.log('ой что то не так ' + err)
+            console.log('ой что то не так 5' + err)
         })
 }
 
 
-deliteCardOnServer()
+//deliteCardOnServer()
+
+export const getLike = (idCard) => {
+    return fetch(`${config.baseUrl}/cards/likes/${idCard}`, {
+        method: 'PUT',
+        headers: config.headers,
+
+
+    })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+
+        //.then(res => console.log(res))
+
+        .catch(err => {
+            console.log('ой что то не так 6' + err)
+        })
+
+}
+
+export const deleteLike= (idCard) => {
+    return fetch(`${config.baseUrl}/cards/likes/${idCard}`, {
+        method: 'DELETE',
+        headers: config.headers,
+
+
+    })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+
+       // .then(res => console.log(res))
+
+        .catch(err => {
+            console.log('ой что то не так 7' + err)
+        })
+
+}
+
+export const updateAvatar =  (avatar) => {
+    return fetch(`${config.baseUrl}/users/me/avatar `,{
+        method: 'PATCH',
+        headers: config.headers,
+        body: JSON.stringify({
+            avatar: avatar
+        })
+    })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        //.then(res => console.log(res))
+
+        .catch(err => {
+            console.log('ой что то не так 8' + err)
+        })
+
+}
+//updateAvatar()
 
 
 

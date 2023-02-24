@@ -20,6 +20,7 @@
 @import url(../blocks/profile/__status/profile__status.css);
 @import url(../blocks/profile/__button/profile__button.css);
 @import url(../blocks/profile/__box/profile__box.css);
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
 /*                         попап всплывающее окно                                        */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__admin/popup__admin.css);

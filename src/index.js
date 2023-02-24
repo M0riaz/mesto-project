@@ -1,6 +1,13 @@
 
 
-import {addNewCardsOnServer, getCardsFromServer, patchingProfile, showLikes, showUser} from "./components/api"
+import {
+    addNewCardsOnServer,
+    getCardsFromServer,
+    patchingProfile,
+    showLikes,
+    showUser,
+    updateAvatar
+} from "./components/api"
 
 
 
@@ -36,7 +43,13 @@ import {
     popups,
     linkInput,
     placeInput,
-    closeButtons, buttonOpenPopupCreateImage, likeCountShow, buttonDeliteOnCard,
+    closeButtons,
+    buttonOpenPopupCreateImage,
+    likeCountShow,
+    buttonDeliteOnCard,
+    avatarChangePopup,
+    buttonOnpenAvatar,
+    profileAvatar, formNewAvatar, inputAvatar, popupButtons
 } from "./components/consts.js";
 
 import {createCard} from "./components/createNewCard.js"
@@ -61,9 +74,13 @@ function renderCard(card, container) {
 
 //функция добавляющая картинки на страницу через popup img
 function submitCardForm(evt) {
+    loading(true)
     evt.preventDefault();
     const newCard = createCard(placeInput.value, linkInput.value);
-    addNewCardsOnServer(placeInput.value, linkInput.value);
+    addNewCardsOnServer(placeInput.value, linkInput.value)
+    .finally(()=>{
+       loading(false)
+    })
     closePopup(imagePopupOpen)
    evt.target.reset()
     renderCard(newCard, elementsList);
@@ -72,26 +89,35 @@ function submitCardForm(evt) {
 formNewPlace.addEventListener('submit', submitCardForm);
 
 
+
+
+
 //функция открывающая окошко popup профиля
 function openPopupEditProfile() {
     openPopup(popupProfileOpenClose);
 }
 profileButtonOpenClose.addEventListener('click', openPopupEditProfile);
 
-//редактирование имени профиля и хобби с сохранением
+
 // formProfile.addEventListener('submit', (evt => {
 //
 //     profileName.textContent = nameInput.value;
 //     profileStatus.textContent = jobInput.value;
 //     closePopup(popupProfileOpenClose);
 // }));
-
+//редактирование имени профиля и хобби с сохранением
 function saveRedactionProfile (evt){
+    loading(true)
     evt.preventDefault();
-    patchingProfile(nameInput.value,jobInput.value)
     profileName.textContent = nameInput.value;
     profileStatus.textContent = jobInput.value;
+
     closePopup(popupProfileOpenClose);
+    patchingProfile(nameInput.value,jobInput.value)
+        .finally(()=>{
+        loading(false)
+    })
+
 }
 formProfile.addEventListener('submit', saveRedactionProfile)
 
@@ -102,6 +128,30 @@ function openedPopupImage() {
 }
 buttonAddImageProfile.addEventListener('click', openedPopupImage);
 
+//функция открывающая окошко добавление картинки для изменения аватара
+function openedPopupChangeAvatar (){
+    openPopup(avatarChangePopup)
+}
+buttonOnpenAvatar.addEventListener('click', openedPopupChangeAvatar )
+
+
+
+function submitNewAvatar (evt) {
+    loading(true)
+    evt.preventDefault();
+    updateAvatar(inputAvatar.value)
+        .finally(()=>{
+            loading(false)
+        })
+    profileAvatar.src = inputAvatar.value;
+    closePopup(avatarChangePopup);
+console.log(inputAvatar.value)
+    evt.target.reset()
+
+}
+
+
+formNewAvatar.addEventListener('submit', submitNewAvatar)
 
 
 
@@ -114,3 +164,19 @@ enableValidation({
     errorClass: 'popup__input-error_active'
 });
 
+ //let qwe = document.querySelector('.qwe')
+function loading (isLoading){
+
+    popupButtons.forEach((btn) => {
+        if (isLoading){
+            btn.textContent = 'Сохранение...'
+            // console.log(qwe.textContent)
+        } else if (btn === buttonOpenPopupCreateImage){
+            btn.textContent = 'Создать'
+        }
+        else {
+            btn.textContent = 'Сохранить'
+        }
+    })
+
+}
