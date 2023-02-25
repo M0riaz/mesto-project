@@ -3,10 +3,7 @@ import {bigImagePopup, cardTemplate, popupImage, popupImageComment, id} from "./
 import {openPopup, closePopup, closeByEscape, closeAnyPopup} from "./utils.js";
 import {array, deleteLike, deliteCardOnServer, getLike, myId} from "./api";
 
-
-
 export function createCard(cardName, linkImage, likes, trashBucket, card) {
-    //console.log(`Card id is ${card}`)
 
     const cardElem = cardTemplate.querySelector('.elements__card').cloneNode(true);
     const elementImage = cardElem.querySelector('.elements__image');
@@ -14,8 +11,6 @@ export function createCard(cardName, linkImage, likes, trashBucket, card) {
     const deleteBtn = cardElem.querySelector('.elements__delite-button')
     const likeBtn = cardElem.querySelector('.elements__button');
     const likeCounter = cardElem.querySelector('.elements__like-counter');
-
-
 
 //удаление карточки
     if(!trashBucket){
@@ -27,16 +22,12 @@ export function createCard(cardName, linkImage, likes, trashBucket, card) {
     });
     }
 
-    //console.log(cardElem._id)
-
     elementImage.src = linkImage;
     elementTitle.textContent = cardName;
     elementImage.alt = cardName;
     likeCounter.textContent = likes;
 
     //лайк карточки
-
-
     likeBtn.addEventListener('click', function () {
 
          if (likeBtn.classList.contains('elements__button_active')){
@@ -54,9 +45,6 @@ export function createCard(cardName, linkImage, likes, trashBucket, card) {
          }
 
     });
-
-
-
 
 // попап с большой картинкой
     elementImage.addEventListener('click', function () {
