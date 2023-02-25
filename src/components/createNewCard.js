@@ -2,9 +2,9 @@
 import {bigImagePopup, cardTemplate, popupImage, popupImageComment, id} from "./consts.js";
 import {openPopup, closePopup, closeByEscape, closeAnyPopup} from "./utils.js";
 import {array, deleteLike, deliteCardOnServer, getLike, myId} from "./api";
+import {getLikeData} from "../index";
 
-export function createCard(cardName, linkImage, likes, trashBucket, card) {
-
+export function createCard(card) {
     const cardElem = cardTemplate.querySelector('.elements__card').cloneNode(true);
     const elementImage = cardElem.querySelector('.elements__image');
     const elementTitle = cardElem.querySelector('.elements__title');
@@ -13,48 +13,55 @@ export function createCard(cardName, linkImage, likes, trashBucket, card) {
     const likeCounter = cardElem.querySelector('.elements__like-counter');
 
 //удаление карточки
-    if(!trashBucket){
+    if (card.owner._id !== myId) {
         deleteBtn.remove()
     } else {
         deleteBtn.addEventListener('click', function () {
-            deliteCardOnServer(card)
+            deliteCardOnServer(card._id)
             cardElem.remove()
-    });
+        });
     }
 
-    elementImage.src = linkImage;
-    elementTitle.textContent = cardName;
-    elementImage.alt = cardName;
-    likeCounter.textContent = likes;
+    elementImage.src = card.link;
+    elementTitle.textContent = card.name;
+    elementImage.alt = card.name;
+
+    function renderingLikes(card) {
+        let likeData = getLikeData(card)
+        likeCounter.textContent = likeData.count
+        if (likeData.isOwnerLike) {
+            likeBtn.classList.add('elements__button_active')
+        } else {
+            likeBtn.classList.remove('elements__button_active')
+        }
+    }
+    renderingLikes(card)
 
     //лайк карточки
     likeBtn.addEventListener('click', function () {
 
-         if (likeBtn.classList.contains('elements__button_active')){
-             deleteLike(card)
-                 .then(res => {
-                     likeCounter.textContent = res.likes.length;
-                     likeBtn.classList.remove('elements__button_active')
-                 })
-         } else {
-             getLike(card)
-                 .then( res => {
-                     likeCounter.textContent = res.likes.length
-                     likeBtn.classList.add('elements__button_active')
-                 })
-         }
+        if (likeBtn.classList.contains('elements__button_active')) {
+            deleteLike(card._id)
+                .then(res => {
+                    renderingLikes(res)
+                })
+        } else {
+            getLike(card._id)
+                .then(res => {
+                    renderingLikes(res)
+                })
+                }
 
     });
 
 // попап с большой картинкой
     elementImage.addEventListener('click', function () {
-        popupImage.src = linkImage;
-        popupImageComment.textContent = cardName;
-        popupImage.alt = cardName;
+        popupImage.src = card.link;
+        popupImageComment.textContent = card.name;
+        popupImage.alt = card.name;
 
         openPopup(bigImagePopup)
     })
 
     return cardElem
-
 }
