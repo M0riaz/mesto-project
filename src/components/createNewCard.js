@@ -26,6 +26,7 @@ export function createCard(card) {
     elementTitle.textContent = card.name;
     elementImage.alt = card.name;
 
+
     function renderingLikes(card) {
         let likeData = getLikeData(card)
         likeCounter.textContent = likeData.count
