@@ -1,7 +1,3 @@
-import {elementsList, likeCountShow, nameInput, profileAvatar, profileName, profileStatus} from "./consts";
-import {createCard} from "./createNewCard";
-
-export const myId = '342d9355557abfcd73d1c01d';
 
 const config = {
     baseUrl: 'https://nomoreparties.co/v1/plus-cohort-21',
@@ -18,7 +14,7 @@ function checkedStatus (res)  {
         return Promise.reject(`Ошибка: ${res.status}`)
 }
 
-function getError (err){
+export function getError (err){
     console.log('ой что то не так с отображением карточек ' + err)
 }
 
@@ -29,9 +25,7 @@ export const getCardsFromServer = () => {
     })
         .then(checkedStatus)
 
-        .catch(getError)
 }
-
 
 // информация о пользователе
 export const showUser = () => {
@@ -39,9 +33,6 @@ export const showUser = () => {
         headers: config.headers
     })
         .then(checkedStatus)
-
-        .catch(getError)
-
 }
 
 // редактирование информации о пользователе
@@ -55,8 +46,6 @@ export const patchingProfile = (name, about) => {
         })
     })
         .then(checkedStatus)
-
-        .catch(getError)
 
 }
 
@@ -72,7 +61,6 @@ export const addNewCardsOnServer = (name, link) => {
     })
         .then(checkedStatus)
 
-        .catch(getError)
 }
 
 //удаление карточки с сервера
@@ -86,7 +74,6 @@ export const deliteCardOnServer = (idCard) => {
     })
         .then(checkedStatus)
 
-        .catch(getError)
 }
 
 
@@ -98,7 +85,6 @@ export const getLike = (idCard) => {
     })
         .then(checkedStatus)
 
-        .catch(getError)
 }
 
 // удалить лайк
@@ -109,7 +95,6 @@ export const deleteLike = (idCard) => {
     })
         .then(checkedStatus)
 
-        .catch(getError)
 }
 // обновить аватар
 export const updateAvatar = (avatar) => {
@@ -122,6 +107,5 @@ export const updateAvatar = (avatar) => {
     })
         .then(checkedStatus)
 
-        .catch(getError)
 }
 

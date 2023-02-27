@@ -11,7 +11,7 @@ export function closePopup(popup) {
 }
 
 //функция закрывающая любой попап на клик по оверлею или по кнопке крестика
-import {popups} from "./consts";
+import {buttonOpenPopupCreateImage, popupButtons, popups} from "./consts";
 
 export function closeAnyPopup(){
     popups.forEach((popup) => {
@@ -32,4 +32,18 @@ export function closeByEscape(evt){
         const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup)
     }
+}
+
+//  функция отображения загрузки
+export function loading(isLoading) {
+
+    popupButtons.forEach((btn) => {
+        if (isLoading) {
+            btn.textContent = 'Сохранение...'
+        } else if (btn === buttonOpenPopupCreateImage) {
+            btn.textContent = 'Создать'
+        } else {
+            btn.textContent = 'Сохранить'
+        }
+    })
 }

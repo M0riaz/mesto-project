@@ -1,24 +1,17 @@
 import {
     addNewCardsOnServer,
-    getCardsFromServer, myId,
+    getCardsFromServer,
+    getError,
     patchingProfile,
-    showLikes,
     showUser,
     updateAvatar
 } from "./components/api"
 
 import {
-    showError,
-    hideError,
-    toggleButtonStatus,
     enableValidation,
-    checkInputValidity,
-    hasInvalidInput,
-    setEventListener
 } from "./components/validate.js";
 
 import {
-    profileCloseButtonCross,
     profileButtonOpenClose,
     formNewPlace,
     formProfile,
@@ -26,31 +19,23 @@ import {
     jobInput,
     buttonAddImageProfile,
     elementsList,
-    cardTemplate,
-    buttonCloseBigImage,
-    popupAddImageClose,
     profileName,
     profileStatus,
     popupProfileOpenClose,
-    bigImagePopup,
     imagePopupOpen,
-    popups,
     linkInput,
     placeInput,
-    closeButtons,
-    buttonOpenPopupCreateImage,
-    likeCountShow,
-    buttonDeliteOnCard,
     avatarChangePopup,
     buttonOnpenAvatar,
-    profileAvatar, formNewAvatar, inputAvatar, popupButtons
+    profileAvatar, formNewAvatar, inputAvatar
 } from "./components/consts.js";
 
-import {createCard} from "./components/createNewCard.js"
+import {createCard} from "./components/card.js"
 
 import './pages/index.css';
 
-import {closePopup, openPopup, closeByEscape, closeAnyPopup} from "./components/utils";
+import {closePopup, openPopup,  loading} from "./components/modal";
+
 
 //функция добавляющая карточки в разметку
 function renderCard(card, container) {
@@ -58,25 +43,19 @@ function renderCard(card, container) {
 }
 
 // вызов функции отображающий карточки с сервера
-function renderCards() {
-    return getCardsFromServer()
-        .then((cards) => {
-            cards.forEach(function (card) {
-                const cardAdd = createCard(card);
-                elementsList.append(cardAdd);
+export let userId
 
-            })
+Promise.all([getCardsFromServer(),showUser()])
+    .then(([cards, user]) =>{
+        profileName.textContent = user.name
+         profileStatus.textContent = user.about
+         profileAvatar.src = user.avatar
+        userId = user._id
+        cards.forEach(function (card) {
+        elementsList.append(createCard(card));
         })
-}
-renderCards()
-
-//вызов функции отображающий информация о пользователе
-showUser()
-    .then(res => {
-        profileName.textContent = res.name
-        profileStatus.textContent = res.about
-        profileAvatar.src = res.avatar
     })
+    .catch(getError)
 
 //функция добавляющая картинки на страницу через popup img
 function submitCardForm(evt) {
@@ -85,13 +64,14 @@ function submitCardForm(evt) {
     addNewCardsOnServer(placeInput.value, linkInput.value)
         .then((card) => {
             const newCard = createCard(card);
-            renderCard(newCard, elementsList)
+            renderCard(newCard, elementsList);
+            closePopup(imagePopupOpen)
+            evt.target.reset()
         })
+        .catch(getError)
         .finally(() => {
             loading(false)
         })
-    closePopup(imagePopupOpen)
-    evt.target.reset()
 }
 
 formNewPlace.addEventListener('submit', submitCardForm);
@@ -108,14 +88,17 @@ profileButtonOpenClose.addEventListener('click', openPopupEditProfile);
 function saveRedactionProfile(evt) {
     loading(true)
     evt.preventDefault();
-    profileName.textContent = nameInput.value
-    profileStatus.textContent = jobInput.value
-
     patchingProfile(nameInput.value, jobInput.value)
+        .then(() => {
+            profileName.textContent = nameInput.value
+            profileStatus.textContent = jobInput.value
+            closePopup(popupProfileOpenClose);
+        })
+        .catch(getError)
         .finally(() => {
             loading(false)
         })
-    closePopup(popupProfileOpenClose);
+
 }
 
 formProfile.addEventListener('submit', saveRedactionProfile)
@@ -131,23 +114,24 @@ buttonAddImageProfile.addEventListener('click', openedPopupImage);
 function openedPopupChangeAvatar() {
     openPopup(avatarChangePopup)
 }
-
 buttonOnpenAvatar.addEventListener('click', openedPopupChangeAvatar)
 
 
 //функция обновляющая аватар пользователя
+
 function submitNewAvatar(evt) {
     loading(true)
     evt.preventDefault();
     updateAvatar(inputAvatar.value)
+        .then(() => {
+            profileAvatar.src = inputAvatar.value;
+            closePopup(avatarChangePopup);
+            evt.target.reset()
+        })
+        .catch(getError)
         .finally(() => {
             loading(false)
         })
-    profileAvatar.src = inputAvatar.value;
-    closePopup(avatarChangePopup);
-    console.log(inputAvatar.value)
-    evt.target.reset()
-
 }
 
 formNewAvatar.addEventListener('submit', submitNewAvatar)
@@ -162,25 +146,13 @@ enableValidation({
     errorClass: 'popup__input-error_active'
 });
 
-//  функция отображения загрузки
-function loading(isLoading) {
 
-    popupButtons.forEach((btn) => {
-        if (isLoading) {
-            btn.textContent = 'Сохранение...'
-        } else if (btn === buttonOpenPopupCreateImage) {
-            btn.textContent = 'Создать'
-        } else {
-            btn.textContent = 'Сохранить'
-        }
-    })
-}
 
 export function getLikeData(card) {
     return {
         count: card.likes.length,
         isOwnerLike: card.likes.some(like => {
-            return like._id === myId
+            return like._id === userId
         })
     }
 }

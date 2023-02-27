@@ -1,10 +1,11 @@
 //функция создающая карточки
-import {bigImagePopup, cardTemplate, popupImage, popupImageComment, id} from "./consts.js";
-import {openPopup, closePopup, closeByEscape, closeAnyPopup} from "./utils.js";
-import {array, deleteLike, deliteCardOnServer, getLike, myId} from "./api";
-import {getLikeData} from "../index";
+import {bigImagePopup, cardTemplate, popupImage, popupImageComment} from "./consts.js";
+import {openPopup} from "./modal.js";
+import {deleteLike, deliteCardOnServer, getError, getLike} from "./api";
+import {getLikeData, userId} from "../index";
 
 export function createCard(card) {
+
     const cardElem = cardTemplate.querySelector('.elements__card').cloneNode(true);
     const elementImage = cardElem.querySelector('.elements__image');
     const elementTitle = cardElem.querySelector('.elements__title');
@@ -13,12 +14,16 @@ export function createCard(card) {
     const likeCounter = cardElem.querySelector('.elements__like-counter');
 
 //удаление карточки
-    if (card.owner._id !== myId) {
+    if (card.owner._id !== userId) {
         deleteBtn.remove()
     } else {
         deleteBtn.addEventListener('click', function () {
             deliteCardOnServer(card._id)
-            cardElem.remove()
+                .then(() => {
+                    cardElem.remove()
+                })
+                .catch(getError)
+
         });
     }
 
@@ -27,8 +32,9 @@ export function createCard(card) {
     elementImage.alt = card.name;
 
 
+
     function renderingLikes(card) {
-        let likeData = getLikeData(card)
+        const likeData = getLikeData(card)
         likeCounter.textContent = likeData.count
         if (likeData.isOwnerLike) {
             likeBtn.classList.add('elements__button_active')
@@ -46,13 +52,14 @@ export function createCard(card) {
                 .then(res => {
                     renderingLikes(res)
                 })
+                .catch(getError)
         } else {
             getLike(card._id)
                 .then(res => {
                     renderingLikes(res)
                 })
+                .catch(getError)
                 }
-
     });
 
 // попап с большой картинкой
