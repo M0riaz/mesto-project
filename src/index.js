@@ -51,6 +51,8 @@ Promise.all([getCardsFromServer(),showUser()])
          profileStatus.textContent = user.about
          profileAvatar.src = user.avatar
         userId = user._id
+       // console.log(user)
+        console.log(userId)
         cards.forEach(function (card) {
         elementsList.append(createCard(card));
         })

@@ -5,7 +5,8 @@ import {deleteLike, deliteCardOnServer, getError, getLike} from "./api";
 import {getLikeData, userId} from "../index";
 
 export function createCard(card) {
-
+    console.log(card)
+//console.log(userId)
     const cardElem = cardTemplate.querySelector('.elements__card').cloneNode(true);
     const elementImage = cardElem.querySelector('.elements__image');
     const elementTitle = cardElem.querySelector('.elements__title');
@@ -14,7 +15,9 @@ export function createCard(card) {
     const likeCounter = cardElem.querySelector('.elements__like-counter');
 
 //удаление карточки
+    //console.log(userId)
     if (card.owner._id !== userId) {
+        console.log(userId)
         deleteBtn.remove()
     } else {
         deleteBtn.addEventListener('click', function () {
@@ -23,7 +26,6 @@ export function createCard(card) {
                     cardElem.remove()
                 })
                 .catch(getError)
-
         });
     }
 
