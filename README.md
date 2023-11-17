@@ -11,10 +11,11 @@
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
 методологии BEM
 
- ##Запуск проекта
+**Запуск проекта**
 
 Клонируйте репозиторий
 
@@ -36,4 +37,6 @@ npm run dev
 
 
 
-Сайт можно посмотреть по данной ссылке: https://m0riaz.github.io/mesto-project/ 
+Сайт можно посмотреть по данной [ссылке](<https://m0riaz.github.io/mesto-project/>)
+
+[Ссылка на макет в Figma](<https://www.figma.com/file/Uolgj4zyImuek71ihHgboP/Sprint-4---12-(Yandex-Practicum)?type=design&node-id=0%3A1&t=CqADX8S65Y8p1Do4-1>)
